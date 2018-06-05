@@ -1,4 +1,5 @@
 # uncomment the following line to use Option B
+import random
 dictionary_health = {'Sanaa': 145, 'Bidziil': 125, 'Ishita': 135 , 'Hao': 130 , 'Adela': 140 , 'The Bionic Man': 150}
         
 dictionary_sig_moves = {'Spinning Crane Leg Kick': 15, 'Lunar Assault': 25, 'Sleeper Headlock': 20, 'Elevated Elbow Smash': 15, 'Firework Neckbreacker': 25, 'Bionic Elbow Drop': 15}
@@ -64,8 +65,11 @@ print("Hello")
 
 wrestlers = {'Sanaa', 'Bidziil', 'Ishita', 'Hao', 'Adela', 'The Bionic Man'}
 mass = {'Sanaa': 201, 'Bidziil': 190, 'Ishita': 205 , 'Hao': 182 , 'Adela': 180 , 'The Bionic Man': 290 }
-sig_moves = {'Sanaa': "Spinning Crane Leg Kick", 'Bidziil': "Lunar Assault" , 'Ishita': "Sleeper Headlock" , 'Hao': "Elevated Elbow Smash", 'Adela': "Firework Neckbreaker", 'The Bionic Man': "Bionic Elbow Drop"}
-fin_moves = {'Sanaa': "Praying Mantis", 'Bidziil': "Supernova Body Bomb" , 'Ishita': "Octopus Grip", 'Hao': "Flying Chokeslame", 'Adela': "Two-Handed Gut Buster", 'The Bionic Man': "Shooting Star Spinning Kick"}
+sig_moves = {'Sanaa': "Spinning Crane Leg Kick", 'Bidziil': "Lunar Assault" , 'Ishita': "Sleeper Headlock" ,
+             'Hao': "Elevated Elbow Smash", 'Adela': "Firework Neckbreaker", 'The Bionic Man': "Bionic Elbow Drop"}
+
+fin_moves = {'Sanaa': "Praying Mantis", 'Bidziil': "Supernova Body Bomb" , 'Ishita': "Octopus Grip",
+             'Hao': "Flying Chokeslame", 'Adela': "Two-Handed Gut Buster", 'The Bionic Man': "Shooting Star Spinning Kick"}
 
 print("\n\n")
 print(wrestlers)
@@ -95,50 +99,18 @@ def validate(un, un_list):
 
 while validate(user_response, user_names):
     user_response = input("What champion name would you like to use? ")
+    
+
 
 champion = Wrestler(user_name, mass[user_name], sig_moves[user_name], fin_moves[user_name])
-print(champion.mass)
+
 
 
 while validate(user_response, user_names):
     user_response = input("What challenger name would you like to use? ")
+    
 
 challenger = Wrestler(user_name, mass[user_name], sig_moves[user_name], fin_moves[user_name])
-print(challenger.mass)
-
-gen_moves = ['Dropkick', 'DDT', 'Sharpshooter', 'Moonsault']
-print("\n\n")
-print(gen_moves)
-
-genMove_names = ["Dropkick", "DDT","Sharpshooter", "Moonsault"]
-user_response = ''
-genMove_name = ''    
-
-while validate(user_response, gen_moves):
-    user_response = input("What generic move would your champion like to use? ")
-
-while validate(user_response, gen_moves):
-    user_response = input("What generic move would your challenger like to use? ")
-
-print("the generic move name is: " + user_response + " -- " + genMove_name)
-print(genMove_names)
-
-weapons = {'Thumbtacks', 'Steel Folding Chair', 'Table', 'Ladder', 'Trash Can', 'Barbed Wire Baseball Bat', 'Handcuffs', 'Kendo Sticks', 'Sledgehammer'}
-print("\n\n")
-print(weapons)
-
-weapons_names = ["Thumbtacks", "Steel Folding Chair","Table", "Ladder", "Trash Can", "Barbed Wire Baseball Bat", "Handcuffs", "Kendo Sticks", "Sledgehammer"]
-user_response = ''
-weapon_name = ''    
-
-while validate(user_response, weapons_names):
-    user_response = input("What weapon would your champion like to use? ")
-
-while validate(user_response, weapons_names):
-    user_response = input("What weapon would your challenger like to use? ")
-
-print("the weapons name is: " + user_response + " -- " + weapon_name)
-print(weapons_names)
 
 stipulations = {'I Quit Match', 'Ladder Match', 'Pinfall Match', 'Submission Match', 'Pinfall Anywhere Match', 'Time Limit Match'}
 print("\n\n")
@@ -179,23 +151,65 @@ championships_names = ['Lightweight Championship', 'Intercontinental Championshi
 user_response = ''
 
 while validate(user_response, championships_names):
-    user_response = input("What championship would you like to fight for?")
+    user_response = input("What championship would you like to fight for? ")
 
 print("the championships name is: " + user_response + " -- ")
 
 print(championships_names)
 
+gen_moves = ["Dropkick", "DDT", "Sharpshooter", "Moonsault"]
+
+weapons = ["Thumbtacks", "Steel Folding Chair", "Table", "Ladder", "Trash Can", "Barbed Wire Baseball Bat", "Handcuffs", "Kendo Sticks", "Sledgehammer"]
+
 run = True
+count = 0
 
 while run:
-    ans = input("\n say something: ")
+
+    print("\n\n")
+    print(gen_moves)
+    ans = input("Select a general move from the list above for your champion: ")
+    #if ans is in the general moves
+    #then subtract number of health points from
+    #challenger
     print("your answer was: " + ans)
+
+    print("\n\n")
+    print(gen_moves)
+    ans = input("Select a general move from the list above for your challenger: ")
+    #if ans is in the general moves
+    #then subtract number of health points from
+    #champion
+    print("Your answer was: " + ans)
+
+
+    print("\n\n")
+    print(weapons)
+    ans = input("Select a weapon from for your champion: " )
+    #if ans is in weapons
+    #then subtract number of health points from
+    #challenger
+    print("Your answer was: " + ans)
+
+    print("\n\n")
+    print(weapons)
+    ans = input("Select a weapon from for your challenger: " )
+    #if ans is in weapons
+    #then subtract number of health points from
+    #champion
+    print("Your answer was: " + ans)
 
     if ans == 'quit':
         run = False
 
+    if count > 3:
+        print(self.fin_moves)
+        run = False
+
+    count = count + 1
+
 if champion.health == challenger.health:
-    print("you have faught to a draw, congratulations")
+    print("You have faught to a draw, Congratulations!")
 elif(champion.health > challenger.health):
     print("Congratulations {}, you have vanquished {}!".format(champion.name, challenger.name))
 else:
